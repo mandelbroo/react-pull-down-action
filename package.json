@@ -1,0 +1,24 @@
+{
+  "name": "react-pull-down-action",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "git@github.com:mandelbroo/react-pull-down-action.git",
+  "author": "Vitalii Makarets",
+  "license": "MIT",
+  "scripts": {
+    "dev": "webpack --mode development --module-bind js=babel-loader --output ./dist/PullDownAction.js",
+    "build": "webpack --mode production --module-bind js=babel-loader --output ./dist/PullDownAction.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^1.0.1",
+    "prop-types": "^15.6.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "webpack": "^4.26.1",
+    "webpack-cli": "^3.1.2"
+  }
+}

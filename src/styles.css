@@ -1,0 +1,26 @@
+.pull-down-action {
+  position: absolute;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background: white;
+  display: flex;
+  justify-content: center;
+  z-index: 99;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 0.4s ease, top 100ms linear;
+  background: white;
+  box-shadow: 0 0 2px 2px rgba(0,0,0,0.1);
+  opacity: 0.1;
+}
+.pull-down-action.progress {
+  opacity: 0.5;
+}
+.pull-down-action.action {
+  opacity: 1;
+}
+.pull-down-action svg {
+  width: 34px;
+  height: 100%;
+}
