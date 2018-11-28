@@ -11,6 +11,7 @@
   justify-content: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
+  align-items: center;
   z-index: 99;
   left: 50%;
   transform: translateX(-50%);
@@ -30,4 +31,15 @@
 .pull-down-action svg {
   width: 34px;
   height: 100%;
+  fill: red
+}
+.pull-down-action-inner-wrapper {
+  display: flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  align-items: center;
 }
