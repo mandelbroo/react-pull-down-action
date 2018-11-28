@@ -29,7 +29,7 @@ class PullDownAction extends React.Component {
         const distanceY = e.touches[0].pageY - this.state.start;
         if (distanceY > thresholdActivate) {
           this.setState({ distance: Number.parseInt(distanceY.toFixed(0)) });
-          e.preventDefault();
+          if (e.cancelable) e.preventDefault();
         }
       },
       { passive: false }
