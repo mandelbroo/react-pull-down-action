@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
   entry: {
-    PullDownAction: [path.resolve(__dirname, "src/index.js")]
+    PullDownAction: [path.resolve(__dirname, "src/pull-down-action.js")]
   },
   output: {
     filename: "pull-down-action.js",
