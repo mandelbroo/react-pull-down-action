@@ -1,7 +1,7 @@
 {
   "name": "react-pull-down-action",
   "version": "0.1.0",
-  "main": "dist/PullDownAction.js",
+  "main": "dist/pull-down-action.js",
   "repository": "git@github.com:mandelbroo/react-pull-down-action.git",
   "author": "Vitalii Makarets",
   "license": "MIT",
