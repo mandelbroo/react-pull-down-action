@@ -5,7 +5,7 @@ module.exports = {
     PullDownAction: [path.resolve(__dirname, "src/index.js")]
   },
   output: {
-    filename: "PullDownAction.js",
+    filename: "pull-down-action.js",
     path: path.join(__dirname, "./dist/"),
     library: "[name]",
     libraryTarget: "umd"

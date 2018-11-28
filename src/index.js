@@ -1,1 +1,1 @@
-export { default } from "./PullDownAction";
+export { default } from "./pull-down-action";

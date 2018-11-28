@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import RoundRefreshIcon from "./RoundRefreshIcon";
+import RoundRefreshIcon from "./round-refresh-icon";
 import "./styles.css";
 
 class PullDownAction extends React.Component {

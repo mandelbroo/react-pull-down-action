@@ -223,30 +223,6 @@ eval("\n/**\n * When source maps are enabled, `style-loader` uses a link element
 
 /***/ }),
 
-/***/ "./src/PullDownAction.js":
-/*!*******************************!*\
-  !*** ./src/PullDownAction.js ***!
-  \*******************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ \"./node_modules/prop-types/index.js\");\n/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _RoundRefreshIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RoundRefreshIcon */ \"./src/RoundRefreshIcon.js\");\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./styles.css */ \"./src/styles.css\");\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_styles_css__WEBPACK_IMPORTED_MODULE_3__);\n\n\n\n\n\nclass PullDownAction extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {\n  constructor(...args) {\n    super(...args);\n    this.state = {\n      indicatorPosition: -50,\n      start: 0,\n      distance: 0,\n      thresholdActivate: 20,\n      thresholdRefresh: 150,\n      maxOffset: 120\n    };\n  }\n\n  componentDidMount() {\n    document.addEventListener(\"touchstart\", e => {\n      this.setState({\n        start: e.touches[0].pageY\n      });\n    });\n    document.addEventListener(\"touchmove\", e => {\n      const {\n        thresholdActivate\n      } = this.state;\n      const distanceY = e.touches[0].pageY - this.state.start;\n\n      if (distanceY > thresholdActivate) {\n        this.setState({\n          distance: Number.parseInt(distanceY.toFixed(0))\n        });\n        e.preventDefault();\n      }\n    }, {\n      passive: false\n    });\n    document.addEventListener(\"touchend\", e => {\n      const {\n        distance,\n        thresholdRefresh\n      } = this.state;\n\n      if (distance >= thresholdRefresh) {\n        const {\n          onAction\n        } = this.props;\n        if (onAction) onAction();\n      }\n\n      this.setState({\n        start: 0,\n        distance: 0\n      });\n    });\n  }\n\n  render() {\n    const {\n      distance,\n      thresholdActivate,\n      thresholdRefresh,\n      maxOffset,\n      indicatorPosition\n    } = this.state;\n    const calcPosition = indicatorPosition + distance;\n    const style = {\n      top: calcPosition > maxOffset ? maxOffset : calcPosition\n    };\n    const innerStyle = {\n      transform: `rotate(${calcPosition}deg)`\n    };\n    let classes = distance >= thresholdActivate && distance < thresholdRefresh ? \"progress\" : \"\";\n    classes = distance >= thresholdRefresh ? \"action\" : classes;\n    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n      className: `pull-down-action ${classes}`,\n      style: style\n    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n      style: innerStyle\n    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RoundRefreshIcon__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null)));\n  }\n\n}\n\nPullDownAction.propTypes = {\n  onAction: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (PullDownAction);\n\n//# sourceURL=webpack://%5Bname%5D/./src/PullDownAction.js?");
-
-/***/ }),
-
-/***/ "./src/RoundRefreshIcon.js":
-/*!*********************************!*\
-  !*** ./src/RoundRefreshIcon.js ***!
-  \*********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\n\nconst RoundRefreshIcon = () => {\n  const icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"svg\", {\n    xmlns: \"http://www.w3.org/2000/svg\",\n    width: \"24\",\n    height: \"24\",\n    viewBox: \"0 0 24 24\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"path\", {\n    fill: \"black\",\n    d: \"M17.65 6.35c-1.63-1.63-3.94-2.57-6.48-2.31-3.67.37-6.69 3.35-7.1 7.02C3.52 15.91 7.27 20 12 20c3.19 0 5.93-1.87 7.21-4.56.32-.67-.16-1.44-.9-1.44-.37 0-.72.2-.88.53-1.13 2.43-3.84 3.97-6.8 3.31-2.22-.49-4.01-2.3-4.48-4.52C5.31 9.44 8.26 6 12 6c1.66 0 3.14.69 4.22 1.78l-1.51 1.51c-.63.63-.19 1.71.7 1.71H19c.55 0 1-.45 1-1V6.41c0-.89-1.08-1.34-1.71-.71l-.64.65z\"\n  }));\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, icon);\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (RoundRefreshIcon);\n\n//# sourceURL=webpack://%5Bname%5D/./src/RoundRefreshIcon.js?");
-
-/***/ }),
-
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -255,7 +231,31 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _PullDownAction__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PullDownAction */ \"./src/PullDownAction.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return _PullDownAction__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n\n\n//# sourceURL=webpack://%5Bname%5D/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _pull_down_action__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pull-down-action */ \"./src/pull-down-action.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return _pull_down_action__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n\n\n//# sourceURL=webpack://%5Bname%5D/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/pull-down-action.js":
+/*!*********************************!*\
+  !*** ./src/pull-down-action.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ \"./node_modules/prop-types/index.js\");\n/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _round_refresh_icon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./round-refresh-icon */ \"./src/round-refresh-icon.js\");\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./styles.css */ \"./src/styles.css\");\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_styles_css__WEBPACK_IMPORTED_MODULE_3__);\n\n\n\n\n\nclass PullDownAction extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {\n  constructor(...args) {\n    super(...args);\n    this.state = {\n      indicatorPosition: -50,\n      start: 0,\n      distance: 0,\n      thresholdActivate: 20,\n      thresholdRefresh: 150,\n      maxOffset: 120\n    };\n  }\n\n  componentDidMount() {\n    document.addEventListener(\"touchstart\", e => {\n      this.setState({\n        start: e.touches[0].pageY\n      });\n    });\n    document.addEventListener(\"touchmove\", e => {\n      const {\n        thresholdActivate\n      } = this.state;\n      const distanceY = e.touches[0].pageY - this.state.start;\n\n      if (distanceY > thresholdActivate) {\n        this.setState({\n          distance: Number.parseInt(distanceY.toFixed(0))\n        });\n        e.preventDefault();\n      }\n    }, {\n      passive: false\n    });\n    document.addEventListener(\"touchend\", e => {\n      const {\n        distance,\n        thresholdRefresh\n      } = this.state;\n\n      if (distance >= thresholdRefresh) {\n        const {\n          onAction\n        } = this.props;\n        if (onAction) onAction();\n      }\n\n      this.setState({\n        start: 0,\n        distance: 0\n      });\n    });\n  }\n\n  render() {\n    const {\n      distance,\n      thresholdActivate,\n      thresholdRefresh,\n      maxOffset,\n      indicatorPosition\n    } = this.state;\n    const calcPosition = indicatorPosition + distance;\n    const style = {\n      top: calcPosition > maxOffset ? maxOffset : calcPosition\n    };\n    const innerStyle = {\n      transform: `rotate(${calcPosition}deg)`\n    };\n    let classes = distance >= thresholdActivate && distance < thresholdRefresh ? \"progress\" : \"\";\n    classes = distance >= thresholdRefresh ? \"action\" : classes;\n    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n      className: `pull-down-action ${classes}`,\n      style: style\n    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n      style: innerStyle\n    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_round_refresh_icon__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null)));\n  }\n\n}\n\nPullDownAction.propTypes = {\n  onAction: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (PullDownAction);\n\n//# sourceURL=webpack://%5Bname%5D/./src/pull-down-action.js?");
+
+/***/ }),
+
+/***/ "./src/round-refresh-icon.js":
+/*!***********************************!*\
+  !*** ./src/round-refresh-icon.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\n\nconst RoundRefreshIcon = () => {\n  const icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"svg\", {\n    xmlns: \"http://www.w3.org/2000/svg\",\n    width: \"24\",\n    height: \"24\",\n    viewBox: \"0 0 24 24\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"path\", {\n    fill: \"black\",\n    d: \"M17.65 6.35c-1.63-1.63-3.94-2.57-6.48-2.31-3.67.37-6.69 3.35-7.1 7.02C3.52 15.91 7.27 20 12 20c3.19 0 5.93-1.87 7.21-4.56.32-.67-.16-1.44-.9-1.44-.37 0-.72.2-.88.53-1.13 2.43-3.84 3.97-6.8 3.31-2.22-.49-4.01-2.3-4.48-4.52C5.31 9.44 8.26 6 12 6c1.66 0 3.14.69 4.22 1.78l-1.51 1.51c-.63.63-.19 1.71.7 1.71H19c.55 0 1-.45 1-1V6.41c0-.89-1.08-1.34-1.71-.71l-.64.65z\"\n  }));\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, icon);\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (RoundRefreshIcon);\n\n//# sourceURL=webpack://%5Bname%5D/./src/round-refresh-icon.js?");
 
 /***/ }),
 
