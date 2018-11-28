@@ -5,10 +5,17 @@
   height: 50px;
   background: white;
   display: flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   justify-content: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
   z-index: 99;
   left: 50%;
   transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
   transition: opacity 0.4s ease, top 100ms linear;
   background: white;
   box-shadow: 0 0 2px 2px rgba(0,0,0,0.1);
