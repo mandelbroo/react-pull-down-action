@@ -1,9 +1,14 @@
 const path = require("path");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: {
+    PullDownAction: [path.resolve(__dirname, "src/index.js")]
+  },
   output: {
-    filename: "PullDownAction.js"
+    filename: "PullDownAction.js",
+    path: path.join(__dirname, "./dist/"),
+    library: "[name]",
+    libraryTarget: "umd"
   },
   module: {
     rules: [
@@ -17,7 +22,7 @@ module.exports = {
       {
         test: /\.css$/,
         exclude: /node_modules/,
-        use: ["css-loader"]
+        use: ["style-loader", "css-loader"]
       }
     ]
   }
