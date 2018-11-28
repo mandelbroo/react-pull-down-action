@@ -6,7 +6,8 @@
   "author": "Vitalii Makarets",
   "license": "MIT",
   "scripts": {
-    "start": "webpack --mode production"
+    "start": "webpack --mode development",
+    "build": "webpack --mode production"
   },
   "peerDependencies": {
     "react": "^16.6.3",

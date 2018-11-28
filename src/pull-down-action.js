@@ -5,18 +5,17 @@ import RoundRefreshIcon from "./round-refresh-icon";
 import "./styles.css";
 
 class PullDownAction extends React.Component {
-  static propTypes = {
-    onAction: PropTypes.func
-  };
-
-  state = {
-    indicatorPosition: -50,
-    start: 0,
-    distance: 0,
-    thresholdActivate: 20,
-    thresholdRefresh: 150,
-    maxOffset: 120
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      indicatorPosition: -50,
+      start: 0,
+      distance: 0,
+      thresholdActivate: 20,
+      thresholdRefresh: 50,
+      maxOffset: 80
+    };
+  }
 
   componentDidMount() {
     document.addEventListener("touchstart", e => {
@@ -25,8 +24,8 @@ class PullDownAction extends React.Component {
     document.addEventListener(
       "touchmove",
       e => {
-        const { thresholdActivate } = this.state;
-        const distanceY = e.touches[0].pageY - this.state.start;
+        const { thresholdActivate, start } = this.state;
+        const distanceY = e.touches[0].pageY - start;
         if (distanceY > thresholdActivate) {
           this.setState({ distance: Number.parseInt(distanceY.toFixed(0)) });
           if (e.cancelable) e.preventDefault();
@@ -66,7 +65,7 @@ class PullDownAction extends React.Component {
 
     return (
       <div className={`pull-down-action ${classes}`} style={style}>
-        <div style={innerStyle}>
+        <div className="pull-down-action-inner-wrapper" style={innerStyle}>
           <RoundRefreshIcon />
         </div>
       </div>
@@ -74,4 +73,7 @@ class PullDownAction extends React.Component {
   }
 }
 
+PullDownAction.propTypes = {
+  onAction: PropTypes.func
+};
 export default PullDownAction;
