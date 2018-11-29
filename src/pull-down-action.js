@@ -12,8 +12,8 @@ class PullDownAction extends React.Component {
       start: 0,
       distance: 0,
       thresholdActivate: 20,
-      thresholdRefresh: 50,
-      maxOffset: 80
+      thresholdRefresh: 80,
+      maxOffset: 70
     };
   }
 
@@ -76,4 +76,5 @@ class PullDownAction extends React.Component {
 PullDownAction.propTypes = {
   onAction: PropTypes.func
 };
+
 export default PullDownAction;
