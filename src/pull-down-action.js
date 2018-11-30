@@ -8,11 +8,11 @@ class PullDownAction extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      indicatorPosition: -50,
+      indicatorPosition: 60,
       start: 0,
       distance: 0,
       thresholdActivate: 20,
-      thresholdRefresh: 80,
+      thresholdRefresh: 100,
       maxOffset: 70
     };
   }
@@ -44,18 +44,7 @@ class PullDownAction extends React.Component {
   }
 
   render() {
-    const {
-      distance,
-      thresholdActivate,
-      thresholdRefresh,
-      maxOffset,
-      indicatorPosition
-    } = this.state;
-    const calcPosition = indicatorPosition + distance;
-    const style = {
-      top: calcPosition > maxOffset ? maxOffset : calcPosition
-    };
-    const innerStyle = { transform: `rotate(${calcPosition}deg)` };
+    const { distance, thresholdActivate, thresholdRefresh } = this.state;
 
     let classes =
       distance >= thresholdActivate && distance < thresholdRefresh
@@ -64,8 +53,8 @@ class PullDownAction extends React.Component {
     classes = distance >= thresholdRefresh ? "action" : classes;
 
     return (
-      <div className={`pull-down-action ${classes}`} style={style}>
-        <div className="pull-down-action-inner-wrapper" style={innerStyle}>
+      <div className={`pull-down-action ${classes}`}>
+        <div className="pull-down-action-inner-wrapper">
           <RoundRefreshIcon />
         </div>
       </div>
